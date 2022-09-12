@@ -1,0 +1,56 @@
+.title {
+    margin-top: 1.5rem;
+    margin-left: 2rem;
+    width: min-content;
+}
+
+.wrapper {
+    position: relative;
+}
+
+.grid {
+    display: flex;
+    flex-direction: column;
+    margin: 1.5rem;
+    gap: 1.5rem;
+    justify-content: center;
+}
+
+.card {
+    display: flex;
+    overflow: hidden;
+    height: max-content;
+    width: 100%;
+    cursor: pointer;
+    border: 4px solid #ccc;
+    border-radius: 10px;
+    padding: 0.5rem;
+}
+
+.cardTitle {
+    width: 100ch;
+}
+
+.card .infoWrapper {
+    color: var(--colour-fg);
+    transition: all 0.5s;
+}
+
+.card:hover .infoWrapper {
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    width: 70ch;
+    padding: 5px 10px;
+}
+
+.info h1 {
+    font-size: 1.75em !important;
+}
+
+.info p {
+    margin-top: 0;
+    font-size: 1em;
+}
