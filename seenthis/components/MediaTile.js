@@ -1,32 +1,36 @@
 import React from 'react';
 import styles from '../styles/MediaGrid.module.css'
+import Image from "next/image";
+import {localFetch} from "../Utils/fetch";
 
-const MediaTile = ({media}) => {
-    const maxDescriptionLength = 150;
+const MediaTile = ({media, media_context}) => {
+        const maxDescriptionLength = 150;
 
-    const truncateDescription = (str) => {
-        return str.substring(0, maxDescriptionLength - 1) + '...';
-    }
+        const truncateDescription = (str) => {
+            return str.substring(0, maxDescriptionLength - 1) + '...';
+        }
 
-    const [readMore, setReadMore] = React.useState(false);
+        // on click
+        const handleClick = async () => {
+            media_context(media.id);
+        }
 
-    return (
-        <div className={styles.card}>
-            <div className={styles.infoWrapper}>
-                <div className={styles.info}>
-                    <h1 className={styles.cardTitle}>{media.title}</h1>
-                    {/* Truncate the description if it exceeds max lenght and add read more or read less links
-                    to expand the description*/}
-                    {media.description.length > maxDescriptionLength && !readMore ? <>
-                            <p>{truncateDescription(media.description)}</p>
-                            <a onClick={() => setReadMore(true)}>{"Read More"}</a></>
-                        : <><p>{media.description}</p>
-                            {media.description.length > maxDescriptionLength ?
-                                <a onClick={() => setReadMore(false)}>{"Read less"}</a> : <></>}</>}
+        const [readMore, setReadMore] = React.useState(false);
+
+        return (
+            <div className={styles.card}>
+                <Image className={styles.image} src={"http://localhost:8080/thumbnails/" + media.thumbnail}
+                       layout="fill" alt={media.title}/>
+                <div className={styles.infoWrapper} onClick={handleClick}>
+                    <div className={styles.info}>
+                        <h1>{media.title}</h1>
+                        <p>{media.description}</p>
+
+                    </div>
                 </div>
             </div>
-        </div>
-    );
-};
+        );
+    }
+;
 
 export default MediaTile;

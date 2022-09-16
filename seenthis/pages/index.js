@@ -2,23 +2,39 @@ import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import MediaGrid from "../components/MediaGrid";
 import {localFetch} from "../Utils/fetch";
+import {useMedia} from "../lib/MediaContext";
+import {useState} from "react";
+import MediaPane from "../components/MediaPane";
 
 export default function Home({apiResponse, images}) {
+
+    const {media, setMedia} = useMedia();
+    const [showMedia, setShowMedia] = useState(false);
+
+    const hideMedia = () => {
+        // noinspection JSIgnoredPromiseFromCall
+        setMedia(undefined);
+    }
+
     return (
-        <div className={styles.container}>
+        <div>
             <Head>
                 <title>SeenThis Media</title>
                 <meta name="description" content="SeenThis code challenge"/>
                 <link rel="icon" href="/favicon.ico"/>
             </Head>
 
-            {apiResponse ? <main className={styles.main}>
-                <h1 className={styles.title}>Your media gallery.</h1>
-                <MediaGrid grid_name="Photos" media={images}/>
-            </main> :
-                <main className={styles.main}>
+            {apiResponse ? <main>
+                    <h1 className={styles.title}>Your media gallery.</h1>
+                    <MediaGrid grid_name="Photos" media={images} media_context={setMedia}/>
+                </main> :
+                <main>
                     <h1 className={styles.title}>API Error</h1>
                 </main>}
+
+            {media !== undefined ?
+            <MediaPane image={media} title={images[media - 1].title} description={images[media - 1].description} on_hide={hideMedia}/> : <></>}
+
 
             <footer>
             </footer>
@@ -61,8 +77,7 @@ export async function getStaticProps(context) {
             },
             revalidate: 120,
         }
-    }
-    else {
+    } else {
         const images = await getImages();
         console.log(images);
         return {
