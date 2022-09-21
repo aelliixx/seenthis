@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Mukta&display=swap');
+
+:root {
+    --colour-bg: #fff;
+    --colour-fg: #000;
+    --scroll-thumb: #0009;
+    --margins: 5rem;
+    --double-margins: calc(var(--margins) * 2);
+    --half-margins: calc(var(--margins) / 2);
+}
+
+html,
+body {
+    padding: 0;
+    margin: 0;
+    /*font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,*/
+    /*  Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;*/
+    font-family: 'Mukta', sans-serif;
+
+    background-color: var(--colour-bg);
+    color: var(--colour-fg);
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+h1, h2, p {
+    font-family: Mukta, sans-serif;
+}
+
+h1 {
+    font-size: 2.5rem;
+}
+
+h2 {
+    font-size: 2rem;
+}
+
+footer {
+    margin: var(--half-margins);
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --colour-bg: #121212;
+        --colour-fg: #fff;
+        --scroll-thumb: #fff3;
+    }
+}

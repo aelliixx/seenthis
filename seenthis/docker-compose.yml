@@ -1,0 +1,7 @@
+version: '3'
+
+services:
+  app:
+    image: docker-nextjs-seenthis
+    build: .
+    network_mode: "host"
