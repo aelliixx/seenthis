@@ -34,8 +34,9 @@ Thumbnails allow for only a small file to be downloaded to enable the gallery pr
 So, while not part of the spec, I felt a gallery was the best looking and functional approach, although I did try a simple text list of media initially.
 
 
-
 Video playback feature was poorly described in the spec, and given that I had spent a handful of hours on this already, I decided to leave it out.
+
+More nuanced design decisions are documented in the code, as comments.
 
 
 ## Conclusion

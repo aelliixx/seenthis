@@ -24,7 +24,6 @@ const MediaPane = ({id, title, description, format, on_hide}) => {
     // Once component is mounted, run this...
     useEffect(() => {
         const handleScroll = () => {
-            console.log(Math.abs(scrollY - scroll));
             if (Math.abs(scrollY - scroll) > maxScrollBeforeHide && scroll !== undefined)
                 on_hide();
         };
